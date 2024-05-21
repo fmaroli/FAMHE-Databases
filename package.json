@@ -1,0 +1,39 @@
+{
+  "name": "famhe",
+  "version": "1.0.0",
+  "description": "Applications' Database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdasfari/FAMHE.git"
+  },
+  "keywords": [
+    "database",
+    "search",
+    "applications"
+  ],
+  "author": "Enrique Condes, Fernando Schimidt Maroli, Mohammad ASFARi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdasfari/FAMHE/issues"
+  },
+  "homepage": "https://github.com/mdasfari/FAMHE#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.2",
+    "bootstrap": "^5.1.3",
+    "canvas": "^2.9.1",
+    "cookie-parser": "^1.4.6",
+    "date-fns": "^2.28.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.3.1",
+    "express-handlebars": "^6.0.2",
+    "mariadb": "^2.5.5",
+    "path": "^0.12.7",
+    "save": "^2.4.0"
+  }
+}
