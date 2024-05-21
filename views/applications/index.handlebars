@@ -1,0 +1,30 @@
+<h4>Applications</h4>
+<a href="/applications/new" class="btn btn-success">New</a>
+<table class="table table-striped table-hover mt-3">
+    <thead>
+        <tr class="table-danger">
+            <th class="indexPicture"></th>
+            <th class="w-25">Name</th>
+            <th>Rating</th>
+            <th>Vendor</th>
+            <th>Url</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each applications}}
+            <tr>
+                <td>
+                    {{#if displayPhoto}}
+                        <img src="{{displayPhoto}}" width="32" height="32" alt="" />
+                    {{/if}}
+                </td>
+                <td><a href='/applications/view/{{applicationID}}'>{{name}}</a></td>
+                <td>{{{showRating rating}}}</td>
+                <td>{{vendor}}</td>
+                <td>{{url}}</td>
+                <td>{{price}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

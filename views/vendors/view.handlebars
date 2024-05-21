@@ -1,0 +1,16 @@
+<h4>{{vendor.name}} Details</h4>
+{{#with vendor}}
+    <div class="mb-2">
+        <input type="hidden" value="{{vendorID}}" />
+        <label class="form-label" for="vendorName">Name</label>
+        <span class="form-control" id="vendorName">{{name}}</span>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" for="vendorWebsite">Website</label>
+        <span class="form-control" id="vendorWebsite">{{website}}</span>
+    </div>
+{{/with}}
+
+<a href="/vendors/edit/{{vendor.vendorID}}" class="btn btn-primary">Edit</a>
+<a href="/vendors" class="btn btn-secondary">Close</a>

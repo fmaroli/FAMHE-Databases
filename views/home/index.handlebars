@@ -1,0 +1,65 @@
+<div class="card" id="card-hero">
+    <div class="card-body d-flex flex-column justify-content-center align-items-center" id="hero">
+        <h1 class="pb-4 our-text">Start exploring</h1>
+        <div class="input-group align-middle" id="searchbar-home">
+            <form action="/search" method="GET" class="flex-fill">
+                <div class="container-fluid m-0">
+                    <div class="row flex-nowrap">
+                        <input class="form-control col flex-auto" type="text" placeholder="Discover" id="searchText" name="search" aria-describedby="searchButton">
+                        <button class="btn btn-success col" type="submit" id="searchButton">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><br>
+<div class="mx-auto" style="width: fit-content;">
+    <h1 class="our-text">Top Rated apps</h1><br>
+</div>
+<div class="d-flex flex-wrap gap-5 justify-content-around ">
+    {{#each topthree}}
+    <div class="card" style="width: 18rem;">
+        {{#if this.displayPhoto}}
+            <img class="card-img-top" src="{{this.displayPhoto}}" alt="Card image cap">
+        {{else}}
+            <img class="card-img-top" src="/images/placeholder280.svg" alt="Card image cap">
+        {{/if}}
+        <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">{{this.description}}</p>
+            <a href="#" class="btn btn-primary">See reviews</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<div class="mx-auto" style="width: fit-content;">
+    <br><h1 class="our-text">Recent search</h1><br>
+</div>
+<div class="d-flex gap-3">
+    <div class="overflow-hidden" style="width: 150px; height: 100px;">
+        <img src="/images/placeholder280.svg" class="img-effect" style="width: 150px; height: 100px;">
+    </div>
+    <div class="overflow-hidden" style="width: 150px; height: 100px;">
+        <img src="/images/placeholder280.svg" class="img-effect" style="width: 150px; height: 100px;">
+    </div>
+</div>
+
+{{#contentFor 'scripts-section'}}
+    <script>
+        function calOnClick (sender) {
+            let display = sender.id;
+            const control = document.getElementById("navDate");
+            if (sender) {
+                try {
+                    let child = sender.querySelector('div');
+                    const displayDate = new Date(child.dataset.date);
+                    if (displayDate) {
+                        display = displayDate.toLocaleDateString();
+                    }
+                } catch {}
+            }
+            
+            control.innerHTML = display;
+        }
+    </script>
+{{/contentFor}}

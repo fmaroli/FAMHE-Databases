@@ -1,0 +1,112 @@
+<div class="header m-5">
+  <h1>Register a new application</h1>
+</div>
+<form action="/applications/new" method="POST" enctype="multipart/form-data">
+  <div class="container">
+    <div class="border border-2 rounded-4 p-3 bd-highlight">
+      <div class="row">
+        <div class="col-8">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" placeholder="Application name" aria-label="name"
+            aria-describedby="Appname" required>
+        </div>
+        <div class="col-4">
+          <label for="vendor" class="form-label">Vendor</label>
+          <input class="form-control" id="vendor" type="text" list="vendors" name="vendor" placeholder="select or type a vendor" required/>
+          <datalist id="vendors">
+            {{#each vendors}}
+            <option value="{{name}}">{{name}}</option>
+            {{/each}}
+          </datalist>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <label class="form-label">Platforms</label>
+          <ul class="list-group" id="platform-list">
+            {{#each platforms}}
+            <li class="list-group-item" aria-disabled="true">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{name}}" id="platform{{platformID}}"
+                  name="platform" />
+                <label class="form-check-label" for="platform{{platformID}}">{{name}}</label>
+              </div>
+            </li>
+            {{/each}}
+            <li class="list-group-item" aria-disabled="true">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="platformNew" name="platform" />
+                <input class="form-control" type="text" placeholder="Create new platform" data-bs-toggle="tooltip"
+                  data-bs-placement="top" title="Press Enter to create the platform" />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <label class="form-label">Categories</label>
+          <ul class="list-group" id="category-list">
+            {{#each categories}}
+            <li class="list-group-item" aria-disabled="true">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{name}}" id="category{{categoryID}}"
+                  name="category" />
+                <label class="form-check-label" for="category{{categoryID}}">{{name}}</label>
+              </div>
+            </li>
+            {{/each}}
+            <li class="list-group-item" aria-disabled="true">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="categoryNew" name="category" />
+                <input class="form-control" type="text" placeholder="Create new category" data-bs-toggle="tooltip"
+                  data-bs-placement="top" title="Press Enter to create the category" />
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <label for="description" class="form-label">Short description</label><br>
+          <input type="text" name="description" class="form-control" placeholder="Application description"
+            aria-label="description" aria-describedby="description" maxlength="2048">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <label for="url" class="form-label">URL</label><br>
+          <input type="url" id="url" name="url" class="form-control" placeholder="URL" aria-label="Appname"
+            aria-describedby="url" maxlength="2048">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-4">
+          <label for="price" class="form-label">Price</label><br>
+          <input type="number" id="price" name="price" class="form-control" placeholder="Application price"
+            aria-label="price" aria-describedby="price" required>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <label for="Appthumb" class="form-label">Upload thumbnail</label>
+          <input type="file" class="form-control" id="displayPhoto" aria-describedby="displayPhoto"
+            aria-label="Upload" accept="image/*" onchange="resizeAndPreviewFile('#preview-img')">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <img class="seld" src="/images/placeholder-preview.png" class="pt-2" id="preview-img" width="300" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 px-3">
+      <div class="col-6">
+        <button type="submit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit Button to create new Application">Submit</button>
+        <a href="/applications" class="btn btn-light">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>
+{{#contentFor 'scripts-section'}}
+  <script src="/js/applicationProcesses.js" type="text/javascript"></script>
+{{/contentFor}}

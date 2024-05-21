@@ -1,0 +1,17 @@
+<h4>{{category.name}} edit</h4>
+<form method="POST" action="/categories/edit">
+    {{#with category}}
+        <div class="mb-2">
+            <input type="hidden" id="categoryID" name="categoryID" value="{{categoryID}}" />
+            <label class="form-label" for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value='{{name}}' />
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label" for="description">Website</label>
+            <input type="text" class="form-control" id="description" name="description" value='{{description}}' />
+        </div>
+    {{/with}}
+    <input type="submit" value="Submit" class="btn btn-warning" />
+    <a href="/categories" class="btn btn-secondary">Cancel</a>
+</form>

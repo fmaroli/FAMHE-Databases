@@ -1,0 +1,18 @@
+<h4>Categories</h4>
+<a href="/categories/new" class="btn btn-success">New</a>
+<table class="table table-striped table-hover mt-3">
+    <thead>
+        <tr class="table-danger">
+            <th class="w-25">Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each categories}}
+            <tr>
+                <td><a href='/categories/view/{{categoryID}}'>{{name}}</a></td>
+                <td>{{Description}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

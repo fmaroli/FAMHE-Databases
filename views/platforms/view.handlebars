@@ -1,0 +1,16 @@
+<h4>{{platform.name}} Details</h4>
+{{#with platform}}
+    <div class="mb-2">
+        <input type="hidden" value="{{platformID}}" />
+        <label class="form-label" for="name">Name</label>
+        <span class="form-control" id="name">{{name}}</span>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" for="description">Description</label>
+        <span class="form-control" id="description">{{description}}</span>
+    </div>
+{{/with}}
+
+<a href="/platforms/edit/{{platform.platformID}}" class="btn btn-primary">Edit</a>
+<a href="/platforms" class="btn btn-secondary">Close</a>

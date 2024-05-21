@@ -1,0 +1,31 @@
+<div class="header m-5">
+  <h1>Results for "{{query}}"</h1>
+</div>
+<div class="container-fluid">
+  <div class="results">
+    <div class="row">
+      <div class="col">
+        <h3>{{qnty}} Applications found</h2>
+        {{!-- For loop here to populate list --}}
+        {{#each appFound}}
+          <a href="/applications/view/{{applicationID}}" class="d-flex align-items-center my-4 text-decoration-none border border-1 rounded">
+            <div class="p-1 width-thumbnail">
+              {{#if displayPhoto}}
+                <img class="width-thumbnail" src="{{displayPhoto}}" alt="">
+              {{else}}
+                <img class="width-thumbnail" src="/images/placeholder280.svg" alt="">
+              {{/if}}
+            </div>
+            <div class="px-3 p-1">
+              <div>
+                <h4>{{name}}</h4><h6 class="nb">{{vendor}}</h6>
+              </div>
+              {{{showRating rating}}}
+              <div class="nb">{{description}}</div>
+            </div>
+          </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

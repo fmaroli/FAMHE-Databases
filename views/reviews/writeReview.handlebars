@@ -1,0 +1,84 @@
+<div class="header m-5">
+  <h1>Write a review for an application</h1>
+</div>
+<form action="/writeReview" method="POST">
+    <div class="border border-2 rounded-4 p-3 bd-highlight">
+      <div class="row pt-2 align-items-center justify-content-center">
+        {{#if application}}
+          <div class="col-md-8 col-12 order-md-1 order-2">
+            <input type="hidden" name="applicationID" value="{{application.applicationID}}" />
+            <label for="name">Name of application you are reviewing:</label><br>
+            <input type="text" name="name" class="form-control" placeholder="Application name" aria-label="name" aria-describedby="name" value="{{application.name}}" readonly>
+          </div>
+          <div class="col-md-4 col-12 order-md-2 order-1 justify-content-center text-md-end text-center">
+            {{#if application.displayPhoto}}
+              <img class="my-2" src="{{application.displayPhoto}}" style="width: 150px;"/>
+            {{else}}
+              <img class="my-2" src="/images/placeholder280.svg" style="width: 150px;"/>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-12">
+              <label class="pb-2" for="name">Name of application you are reviewing:</label><br>
+              <input type="text" name="name" class="form-control" list="applications" placeholder="Type or select an application" />
+              <datalist id="applications">
+                {{#each appNames}}
+                  <option value="{{name}}">{{name}}</option>
+                {{/each}}
+              </datalist>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="border border-2 rounded-4 mt-3 p-3 bd-highlight">
+      <div class="">
+        <p>How likely is it that you would recommend it to a friend?</p>
+      </div>
+      <div class="btn-group gap-3 align-items-center" role="group" aria-label="Basic radio toggle button group">
+        <span class="small nb">Less<br>likely</span>
+        <input type="radio" class="btn-check" name="rating" id="btnradio1" value="1" autocomplete="off" checked>
+        <label class="rateSelectImage" for="btnradio1">1</label>
+
+        <input type="radio" class="btn-check" name="rating" id="btnradio2" value="2" autocomplete="off">
+        <label class="rateSelectImage" for="btnradio2">2</label>
+
+        <input type="radio" class="btn-check" name="rating" id="btnradio3" value="3" autocomplete="off">
+        <label class="rateSelectImage" for="btnradio3">3</label>
+
+        <input type="radio" class="btn-check" name="rating" id="btnradio4" value="4" autocomplete="off">
+        <label class="rateSelectImage" for="btnradio4">4</label>
+
+        <input type="radio" class="btn-check" name="rating" id="btnradio5" value="5" autocomplete="off">
+        <label class="rateSelectImage" for="btnradio5">5</label>
+        <span class="small nb">Very<br>likely</span>
+      </div>
+
+    </div>
+    <div class="border border-2 rounded-4 mt-3 py-3 px-4 bd-highlight">
+      <div class="row">
+        <label for="title">Review title:</label><br>
+        <input type="text" name="title" class="form-control" placeholder="Review title" aria-label="title" aria-describedby="title" required>
+      </div>
+      <div class="row mt-2">
+        <label for="likeComments">What do you like about this application?</label><br>
+        <div class="form-floating">
+          <textarea name="likeComments" class="form-control" placeholder="." id="pos-textarea" style="height: 100px" required></textarea>
+          <label for="likeComments" style="padding: 1rem 1.75rem">What are the upsides of using this app?</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <label for="dislikeComments">And what do you dislike?</label><br>
+        <div class="form-floating">
+          <textarea name="dislikeComments" class="form-control" placeholder="." id="neg-textarea" style="height: 100px" required></textarea>
+          <label for="dislikeComments" style="padding: 1rem 1.75rem">What is the least helpful about using this app?</label>
+        </div>
+      </div>
+    </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <a href="/" class="btn btn-light">Cancel</a>
+    </div>
+  </div>
+</form>
